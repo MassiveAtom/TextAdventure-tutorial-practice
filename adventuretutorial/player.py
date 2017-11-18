@@ -4,11 +4,12 @@ import items, world
 
 
 
-class Player:
-	inventory = [items.Rock()]
-	hp = 100
-	location_x, location_y = (12, 20)
-	victory = False
+class Player():
+	def __init__(self):
+		self.inventory = [items.Rock()]
+		self.hp = 100
+		self.location_x, self.location_y = (12, 20)
+		self.victory = False
 
 	def is_alive(self):
 		return self.hp > 0
