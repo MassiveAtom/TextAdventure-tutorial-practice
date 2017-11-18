@@ -1,8 +1,43 @@
-			LeaveCaveRoom	
-	Find5GoldRoom	EmptyCavePath	GiantSpiderRoom	EmptyCavePath
-		EmptyCavePath		
-		EmptyCavePath		
-GiantSpiderRoom	EmptyCavePath	StartingRoom	EmptyCavePath	FindDaggerRoom
-		Find5GoldRoom		
-		EmptyCavePath	OgreRoom	Find5GoldRoom		
-		SnakePitRoom		
+LeaveCaveRoom	ManBearPigRoom	EmptyCavePath										
+OgreRoom	EmptyCavePath											
+EmptyCavePath	GiantSpiderRoom											
+EmptyCavePath	EmptyCavePath	GiantSpiderRoom										
+	EmptyCavePath												
+	EmptyCavePath											
+	EmptyCavePath											
+FindGoldRoom	EmptyCavePath											
+FindGoldRoom	EmptyCavePath	GiantCaveBeetleRoom										
+	SkeletonRoom											
+	EmptyCavePath											
+GiantCaveBeetleRoom	EmptyCavePath											
+	EmptyCavePath	FindGoldRoom	OgreRoom									
+	EmptyCavePath	FindPotionRoom										
+ManBearPigRoom	EmptyCavePath											
+	EmptyCavePath											
+FindPotionRoom	EmptyCavePath											
+	EmptyCavePath		GiantCaveBeetleRoom	GiantCaveBeetleRoom								
+	EmptyCavePath		FindGoldRoom			SkeletonRoom	GiantRatRoom	GiantRatRoom				
+	EmptyCavePath	EmptyCavePath	SkeletonRoom	GiantSpiderRoom	EmptyCavePath	FindAxeRoom		GiantSpiderRoom				
+						OgreRoom		GiantRatRoom			GiantSpiderRoom	StartingRoom
+						FindSwordRoom		GiantSpiderRoom		EmptyCavePath	EmptyCavePath	EmptyCavePath
+						EmptyCavePath		FindSwordRoom		FindPotionRoom		EmptyCavePath
+						EmptyCavePath		EmptyCavePath		FindSwordRoom	EmptyCavePath	GiantSpiderRoom
+						EmptyCavePath		EmptyCavePath		OgreRoom		EmptyCavePath
+			OgreRoom	FindPotionRoom	EmptyCavePath	FindPotionRoom		FindAxeRoom		EmptyCavePath		GiantCaveBeetleRoom
+						FindPotionRoom		EmptyCavePath		EmptyCavePath	EmptyCavePath	FindDaggerRoom
+						EmptyCavePath	OgreRoom	GiantSpiderRoom	FindSwordRoom			EmptyCavePath
+								EmptyCavePath		EmptyCavePath		EmptyCavePath
+								EmptyCavePath		EmptyCavePath	EmptyCavePath	FindPotionRoom
+						ManBearPigRoom		EmptyCavePath		EmptyCavePath		EmptyCavePath
+						EmptyCavePath	SkeletonRoom	EmptyCavePath		EmptyCavePath		GiantCaveBeetleRoom
+						FindPotionRoom		EmptyCavePath		EmptyCavePath		FindPotionRoom
+						EmptyCavePath		SkeletonRoom	GiantCaveBeetleRoom	EmptyCavePath		EmptyCavePath
+						EmptyCavePath			GiantCaveBeetleRoom			EmptyCavePath
+						FindGoldRoom			EmptyCavePath			EmptyCavePath
+			ManBearPigRoom			GiantSpiderRoom			FindGoldRoom			FindGoldRoom
+EmptyCavePath	FindPotionRoom	GiantCaveBeetleRoom	EmptyCavePath	EmptyCavePath	EmptyCavePath	FindGoldRoom	EmptyCavePath	EmptyCavePath	FindPotionRoom			GiantCaveBeetleRoom
+						EmptyCavePath			EmptyCavePath			EmptyCavePath
+						FindSwordRoom			FindPotionRoom			FindPotionRoom
+						FindPotionRoom			EmptyCavePath			GiantCaveBeetleRoom
+						EmptyCavePath			FindGoldRoom			EmptyCavePath
+	EmptyCavePath	FindPotionRoom	GiantCaveBeetleRoom	EmptyCavePath	EmptyCavePath	FindPotionRoom	EmptyCavePath	GiantRatRoom	EmptyCavePath	EmptyCavePath		EmptyCavePath

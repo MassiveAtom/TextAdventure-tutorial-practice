@@ -1,5 +1,5 @@
+#!python3
 """Describes the actions a player can make in the game"""
-__author__ = 'Phillip Johnson'
 
 from player import Player
 
@@ -8,7 +8,6 @@ class Action():
     """The base class for all actions"""
     def __init__(self, method, name, hotkey, **kwargs):
         """Creates a new action
-
         :param method: the function object to execute
         :param name: the name of the action
         :param ends_turn: True if the player is expected to move after this action else False
@@ -48,11 +47,18 @@ class ViewInventory(Action):
     def __init__(self):
         super().__init__(method=Player.print_inventory, name='View inventory', hotkey='i')
 
+class CheckStats(Action):
+    """Prints the player's relavant stats"""
+    def __init__(self):
+        super().__init__(method=Player.check_stats, name='Stats', hotkey='p')
 
+class Heal(Action):		
+    def __init__(self):
+        super().__init__(method=Player.use_potion, name='Heal', hotkey='h')
+        
 class Attack(Action):
     def __init__(self, enemy):
         super().__init__(method=Player.attack, name="Attack", hotkey='a', enemy=enemy)
-
 
 class Flee(Action):
     def __init__(self, tile):
