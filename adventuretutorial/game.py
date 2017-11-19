@@ -49,6 +49,8 @@ Choose an action:""")
             for action in available_actions:
                 print(action)
             action_input = input('Action: ')
+            os.system('cls')
+            player.update_map()
             if action_input == "a": 
                 print("")
                 print("==========================")

@@ -2,14 +2,12 @@
 import random
 import items, world
 
-
-
 class Player():
-	def __init__(self):
-		self.inventory = [items.Rock()]
-		self.hp = 100
-		self.location_x, self.location_y = (12, 20)
-		self.victory = False
+	inventory = [items.Rock()]
+	hp = 100
+	location_x, location_y = (12, 20)
+	victory = False
+	pmap = [[12, 20]] 
 
 	def is_alive(self):
 		return self.hp > 0
@@ -161,3 +159,36 @@ class Player():
 		print("Damage: {}".format(current_dmg))
 		print("Hit chance: {}%".format(current_aim))
 		print("--------------------")
+
+	def check_map(self):
+		with open('resources/newmap.txt', 'r') as f:
+			rows = f.readlines()
+		x_max = len(rows[0].split('\t'))
+		map_lay = "X"
+		for x in range(x_max):
+			map_lay = map_lay + " " + str(x)
+		for y in range(len(rows)):
+			map_lay = map_lay + "\n" + str(y) + " "
+			for x in range(x_max):
+				room_disc = False
+				current_room = False
+				for room in self.pmap:
+					if (y == room[1] and x == room[0]):
+						room_disc = True
+					if (y == self.location_y and x == self.location_x):
+						current_room = True
+				if ( current_room == True ):
+					map_lay = map_lay + "x "
+				elif (room_disc == True):
+					map_lay = map_lay + "O "
+				else:
+					map_lay = map_lay + ". "		
+		print(map_lay)
+
+	def update_map(self):
+		discovered = False
+		for room in self.pmap:
+			if (room[1] == self.location_y and room[0] == self.location_x):
+				discovered = True
+		if (discovered == False):
+			self.pmap.append([self.location_x, self.location_y])

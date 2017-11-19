@@ -41,6 +41,7 @@ class MapTile:
 		moves.append (actions.Heal())
 		moves.append (actions.CheckStats())
 		moves.append(actions.ViewInventory())
+		moves.append(actions.CheckMap())
 		return moves
 
 #starting room

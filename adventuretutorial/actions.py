@@ -52,6 +52,11 @@ class CheckStats(Action):
     def __init__(self):
         super().__init__(method=Player.check_stats, name='Stats', hotkey='p')
 
+class CheckMap(Action):
+    """Prints the player's relavant stats"""
+    def __init__(self):
+        super().__init__(method=Player.check_map, name='Check Map', hotkey='m')
+
 class Heal(Action):		
     def __init__(self):
         super().__init__(method=Player.use_potion, name='Heal', hotkey='h')
