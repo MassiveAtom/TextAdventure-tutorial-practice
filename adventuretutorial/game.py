@@ -49,7 +49,12 @@ Choose an action:""")
             for action in available_actions:
                 print(action)
             action_input = input('Action: ')
-            os.system('cls')
+            cls_excluded_hotkeys = ["a", "n", "e", "s", "w"]
+            clearscreen = True;
+            for act_hotkey in cls_excluded_hotkeys:
+                if action_input == act_hotkey:
+                    clearscreen = False;
+            if clearscreen == True: os.system('cls')
             player.update_map()
             if action_input == "a": 
                 print("")
