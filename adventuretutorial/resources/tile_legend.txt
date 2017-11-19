@@ -1,0 +1,16 @@
+#### Loot Rooms ####
+DgR = Find Dagger
+SdR = Find Sword
+AxR = Find Axe
+BAR = Find Battle Axe
+GdR = Find Gold
+PtR = Find Potion
+
+
+#### Enemy Rooms ####
+GSR = Giant Spider
+GRR = Giant Rat
+OgR = Ogre
+MBP = Man Bear Pig
+CbR = Giant Cave Beetle
+SkR = Skeleton
