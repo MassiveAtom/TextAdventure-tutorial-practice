@@ -7,7 +7,7 @@ class Player():
 	hp = 100
 	location_x, location_y = (12, 20)
 	victory = False
-	pmap = [[12, 20]] 
+	pmap = [[location_x, location_y]] 
 
 	def is_alive(self):
 		return self.hp > 0

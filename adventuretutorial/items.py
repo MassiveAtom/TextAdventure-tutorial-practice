@@ -97,4 +97,4 @@ class Potion(Essential):
                          description="A Potion that restores {} HP.".format(str(self.amt)),
                          value=self.amt,
                          x = x,
-                         y = y)   
+                         y = y)

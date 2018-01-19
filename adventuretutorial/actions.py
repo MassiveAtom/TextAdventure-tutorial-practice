@@ -53,18 +53,21 @@ class CheckStats(Action):
         super().__init__(method=Player.check_stats, name='Stats', hotkey='p')
 
 class CheckMap(Action):
-    """Prints the player's relavant stats"""
+    """Outputs the player's map"""
     def __init__(self):
         super().__init__(method=Player.check_map, name='Check Map', hotkey='m')
 
-class Heal(Action):		
+class Heal(Action):	
+    """Heals the player"""
     def __init__(self):
         super().__init__(method=Player.use_potion, name='Heal', hotkey='h')
         
 class Attack(Action):
+    """Attacks enemy"""
     def __init__(self, enemy):
         super().__init__(method=Player.attack, name="Attack", hotkey='a', enemy=enemy)
 
 class Flee(Action):
+    """flee from battle into a random near by room"""
     def __init__(self, tile):
         super().__init__(method=Player.flee, name="Flee", hotkey='f', tile=tile)
