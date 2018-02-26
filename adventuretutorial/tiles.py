@@ -1,6 +1,6 @@
 #!python3
 """Describes the tiles in the world space."""
-import items, enemies, actions, world, random
+import items, enemies, actions, world, random, messages
 from player import Player
 
 
@@ -48,22 +48,17 @@ class MapTile:
 class StR(MapTile):
 
 	def enter_room(self):
-		return """
-		You feel like you've been here before
-		"""
+		return messages.output('starting_room')
 
 	def modify_player(self, the_player):
 		#Room has no action on player
 		pass
+
 #Leave Cave Room (end game)
 class END(MapTile):
 
 	def enter_room(self):
-		return """
-		You see a bright light in the distance...
-		... it grows as you get closer! It's sunlight!
-		Victory is yours!
-		"""
+		return messages.output('game_win')
 
 	def modify_player(self, player):
 		input("Press Enter to Exit")
@@ -73,20 +68,7 @@ class END(MapTile):
 class ECP(MapTile):
 
 	def enter_room(self):
-		x = random.randrange(0,3)
-		message_list = [
-			"""
-			Another unremarkable part of the cave. You must forge onwards.
-			""" 
-			, 
-			"""
-			Just a dark cave
-			"""
-			,
-			"""
-			You don't notice anything special in this part of the cave
-			"""        ]
-		return message_list[x]
+		return messages.list_output('empty_cave')
 			
 	def modify_player(self, the_player):
 		#Room has no action on player
@@ -105,9 +87,10 @@ class EnemyRoom(MapTile):
 				print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, the_player.hp))
 			else:
 				print ('Enemy Missed!')
+				
 	def available_actions(self):
 		if self.enemy.is_alive():
-			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy)]
+			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.ViewInventory(), actions.CheckStats(), actions.CheckMap(), actions.Heal()]
 		else:
 			return self.adjacent_moves()
 			
@@ -254,7 +237,7 @@ class PtR(LootRoom):
 			return """
 			You find a Potion on the ground!
 			"""        
-		 
+
 #giant spider
 class GSR(EnemyRoom):
 	def __init__(self, x, y):
@@ -262,14 +245,9 @@ class GSR(EnemyRoom):
 
 	def enter_room(self):
 		if self.enemy.is_alive():
-		
-			return """
-			A giant spider jumps down from its web in front of you!
-			"""
+			return messages.output('spider_fight')
 		else:
-			return """
-			The corpse of a dead spider rots on the ground.
-			"""
+			return messages.output('spider_dead')
 #giant rat
 class GRR(EnemyRoom):
 	def __init__(self, x, y):

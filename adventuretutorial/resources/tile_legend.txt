@@ -1,3 +1,6 @@
+END = End game room
+StR = Starting room
+
 #### Loot Rooms ####
 DgR = Find Dagger
 SdR = Find Sword

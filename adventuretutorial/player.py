@@ -43,7 +43,7 @@ class Player():
 	def move(self, dx, dy):
 		self.location_x += dx
 		self.location_y += dy
-		print(world.tile_exists(self.location_x, self.location_y).enter_room())
+		return world.tile_exists(self.location_x, self.location_y).enter_room()
 
 	def move_north(self):
 		self.move(dx=0, dy=-1)
@@ -58,6 +58,7 @@ class Player():
 		self.move(dx=-1, dy=0)
 
 	def attack(self, enemy):
+		print("\n==========================")
 		best_weapon = None
 		max_dmg = 0
 		max_aim = 0
@@ -73,14 +74,12 @@ class Player():
 					if chance <= max_aim:
 						enemy.hp -= best_weapon.damage
 						if not enemy.is_alive():
-							print("You killed the {}!".format(enemy.name))
-							print("==========================")
+							print("You killed the {}!".format(enemy.name))				
 						else:
 							print("you hit {} dealing {} damage, enemy HP is {}.".format(enemy.name, max_dmg, enemy.hp))
-							print("==========================")
 					elif chance > max_aim:
 						print("You miss, {}'s health is still {}.".format(enemy.name, enemy.hp))
-						print("==========================")
+		print("==========================\n")
 	def use_potion(self):
 		#creates a fresh list and checks inventory for potions
 		#and adds Heal amount of each potion to the list
@@ -94,19 +93,19 @@ class Player():
 			print("")
 			print("Health already full")
 			print("") 
-   
+
 		#checks if the potion list is still empty after checking inventory for them
 		elif potionlist == []:
 			print("")
 			print("No Potions")
 			print("")
 		
-		#This is if the Potion has potions in it
+		#This is if the list has potions in it
 		elif potionlist != []:
 			print("")
-			print("Health is:",self.hp)            
-			print("Potions Strengths Available:",potionlist ) 
-			#Keeps people from being an ass and crashing the game with invalid entries
+			print("Health is: ",self.hp)            
+			print("Potions Strengths Available: ",potionlist ) 
+			#Keeps people from using invalid entries
 			try:
 				healamt = int(input("""Enter potion's heal strength  to heal or enter 0 to exit: """))
 			except:
@@ -121,7 +120,7 @@ class Player():
 					print("Health is now:",self.hp)
 					print("")
 					break
-				#This break the healing action if you enter 0,leave blank, or enter invalid character for 'healamt'
+				#This breaks the healing action if you enter 0,leave blank, or enter invalid character for 'healamt'
 				elif i == 0:
 					print("")
 					break
@@ -132,33 +131,34 @@ class Player():
 				if isinstance(item, items.Potion):
 					if item.value == healamt:
 						self.inventory.pop(index)
-						
-		
-			 
+
+
 	def flee(self, tile):
 		"""Moves the player randomly to an adjacent tile"""
 		available_moves = tile.adjacent_moves()
 		r = random.randint(0, len(available_moves) - 1)
 		self.do_action(available_moves[r])
-
-	def check_stats(self):	       
+    #checks relevant stats for player
+	def check_stats(self):
+        # check inventory for currently equipped weapon and its relevant info
 		for item in self.inventory:
 			if item.IsEquiped:
 				current_weapon = item.name
 				current_aim = item.aim
 				current_dmg = item.damage
-		total_potions = 0
-		potionlist = list()    
+        #count health potions
+		total_potions = 0 
 		for item in self.inventory:
 			if isinstance(item, items.Potion):
 				total_potions += 1
-		print("--------------------")
+        #output stats
+		print("===========================")
 		print("Health: {}".format(self.hp))
 		print("Potions: {}".format(total_potions))
 		print("Equiped:",current_weapon)
-		print("Damage: {}".format(current_dmg))
-		print("Hit chance: {}%".format(current_aim))
-		print("--------------------")
+		print("--Damage: {}".format(current_dmg))
+		print("--Hit chance: {}%".format(current_aim))
+		print("===========================")
 
 	def check_map(self):
 		with open('resources/newmap.txt', 'r') as f:
